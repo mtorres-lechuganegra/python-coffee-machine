@@ -12,19 +12,42 @@ def order_coffee():
     print("3: Latte")
     print("4: Americano")
 
-    option = input("Option: ")
+    try:
+        option = int(input("Option: "))
+    except ValueError:
+        print("Debes ingresar un número.")
+        return
 
     coffees = {
-        "1": "Expresso",
-        "2": "Cappuccino",
-        "3": "Latte",
-        "4": "Americano"
+        1: {
+            "name": "Expresso",
+            "price": 5.50
+        },
+        2: {
+            "name": "Cappuccino",
+            "price": 7.00
+        },
+        3: {
+            "name": "Latte",
+            "price": 6.50
+        },
+        4: {
+            "name": "Americano",
+            "price": 5.00
+        }
     }
 
-    if option in coffees:
-        selected_coffee = coffees[option]
-        print(f"Has elegido {selected_coffee}. Preparando tu café.")
-        with open(ORDER_FILES, "a", encoding="utf-8") as file:
-            file.write(selected_coffee.upper() + "\n")
-    else:
-        print("La opción no es válida; por favor, intenta de nuevo")
+    selected_coffee = coffees.get(option)
+
+    if selected_coffee is None:
+        print("La opción no es válida; intenta de nuevo.")
+        return
+
+    print(
+        f"Has elegido {selected_coffee['name']} "
+        f"con valor S/ {selected_coffee['price']:.2f}. "
+        f"Preparando tu café."
+    )
+
+    with open(ORDER_FILES, "a", encoding="utf-8") as file:
+        file.write(selected_coffee["name"].upper() + "\n")
