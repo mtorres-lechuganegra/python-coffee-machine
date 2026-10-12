@@ -1,13 +1,22 @@
 from config import ORDER_FILES
 
+'''
+Ver Historial:
+- Valida si el archivo existe
+- Valida si existe contenido
+- Muestra contenido de pedidos
+- Maneja mensaje de error
+'''
 def history_view():
     try:
         print("\n Historial de pedidos")
         with open(ORDER_FILES, "r", encoding="utf-8") as file:
             orders = file.readlines()
             if orders:
-                # enumerate: nos dá el índice de línea y contenido
-                ## start: indica en donde arranca la lectura (línea)
+                """
+                enumerate: nos dá el índice de línea y contenido
+                - start: indica en donde arranca la lectura (línea)
+                """
                 for i, order in enumerate(orders, start=1):
                     print(str(i) + f". {order.strip()}")
             else:

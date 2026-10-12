@@ -7,14 +7,15 @@ def  main():
         # Mostrar el menú
         menu_view()
         option = input("Selecciona una opción: ") # Siempre devuelve string
+        option = int(option)
 
-        if option == "1":
+        if option == 1:
             # pedir un café
             order_coffee()
-        elif option == "2":
+        elif option == 2:
             # ver el historial
             history_view()
-        elif option == "3":
+        elif option == 3:
             print("\n Muchas gracias por haber tomado nuestro café.")
             break
         else:

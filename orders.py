@@ -1,5 +1,10 @@
 from config import ORDER_FILES
 
+'''
+Solicitar café:
+- Brinda la selección de café
+- Escribe en el archivo de pedidos, el café elegido
+'''
 def order_coffee():
     print("\n Elige el café que prefieras: ")
     print("1: Expresso")
